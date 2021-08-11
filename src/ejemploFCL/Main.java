@@ -22,24 +22,24 @@ public class Main {
 
 		JFuzzyChart.get().chart(fis);
 		
-		int service = setVariable(0, 9, "Servicio");
+		int ica = setVariable(0, 100, "ICA");
 		
 		
-		fis.setVariable("service", service);
+		fis.setVariable("ica", ica);
 
-		int food = setVariable(0, 9, "Comida");
+		int water_temperature = setVariable(0, 40, "Water Temperature");
 		
-		fis.setVariable("food", food);
+		fis.setVariable("water_temperature", water_temperature);
 
 
 		System.out.println("Procesando...");
 		fis.evaluate();
 		
-		Variable tipVariable = fis.getVariable("tip");
+		Variable probabilityVariable = fis.getVariable("probability");
 
-		System.out.println("Resultado "+tipVariable.getValue());
+		System.out.println("Resultado "+probabilityVariable.getValue());
 		
-		JFuzzyChart.get().chart(tipVariable, tipVariable.getDefuzzifier(), true);
+		JFuzzyChart.get().chart(probabilityVariable, probabilityVariable.getDefuzzifier(), true);
 
 	}
 

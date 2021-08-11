@@ -1,47 +1,51 @@
 // Block definition (there may be more than one block per file)
-FUNCTION_BLOCK tipper
+FUNCTION_BLOCK probabilityper
 
 // Define input variables
 VAR_INPUT
-    service : REAL;
-    food : REAL;
+    ica : REAL;
+    water_temperature : REAL;
 END_VAR
 
 // Define output variable
 VAR_OUTPUT
-    tip : REAL;
+    probability : REAL;
 END_VAR
 
 // Input
-FUZZIFY service
-    TERM poor := (0, 1) (4, 0) ; 
-    TERM good := (1, 0) (4,1) (6,1) (9,0);
-    TERM excellent := (6, 0) (9, 1);
+FUZZIFY ica
+    TERM awful := (0, 1) (30, 0) ; 
+    TERM bad := (25, 0) (30,1) (45,1) (55,0);
+    TERM regular := (45, 0) (55,1) (65,1) (75,0);
+    TERM good := (65, 0) (75,1) (85,1) (95,0);
+    TERM excellent := (85, 0) (100, 1);
 END_FUZZIFY
 
 // Input
-FUZZIFY food
-    TERM rancid := (0, 1) (1, 1) (4,0) ;
-    TERM normal := (3, 0) (4, 1) (6, 1) (8, 0);
-    TERM delicious := (7,0) (9,1);
+FUZZIFY water_temperature
+    TERM low := (0, 1) (25, 0) ;
+    TERM ideal := (22.5, 0) (25, 1) (27.5, 1) (30, 0);
+    TERM high := (27.5, 0) (30, 1) (37.5, 1) (40, 0);
+    TERM very_high := (37.5,0) (40,1);
 END_FUZZIFY
 
 // Output
-DEFUZZIFY tip
-    TERM cheap := (0,0) (5,1) (10,0);
+DEFUZZIFY probability
+    TERM low := (0,0) (5,1) (10,0);
     TERM average := (10,0) (15,1) (20,0);
-    TERM generous := (20,0) (25,1) (30,0);
+    TERM high := (20,0) (25,1) (30,0);
     // Use 'Center Of Gravity' defuzzification method
     METHOD : COG;
     // Default value is 0 (if no rule activates defuzzifier)
     DEFAULT := 0;
 END_DEFUZZIFY
 
-//			service     poor     good       excellent
-//	food        
-//	rancid              cheap    cheap      cheap
-//  normal              cheap    average    generous
-//	delicious			cheap    generous   generous
+//			ica         awful     bad       regular     good       excellent
+//	water_temperature        
+//	low                 low       low         low       average     average    
+//  ideal               low       low         high      high        high       
+//	high			    low       low         low       average     average    
+//	very_high			low       low         low       low         low    
 //
 
 RULEBLOCK No1
@@ -53,32 +57,65 @@ RULEBLOCK No1
     // Use 'max' accumulation method
     ACCU : MAX;
 
-    RULE 1 : IF service IS poor AND food IS rancid 
-                THEN tip IS cheap;
+    RULE 1 : IF ica IS awful AND water_temperature IS low 
+                THEN probability IS low;
 
-    RULE 2 : IF service IS good AND food IS rancid
-                THEN tip IS cheap; 
+    RULE 2 : IF ica IS bad AND water_temperature IS low
+                THEN probability IS low; 
 
-    RULE 3 : IF service IS excellent AND food IS rancid 
-                THEN tip IS cheap;
+    RULE 3 : IF ica IS regular AND water_temperature IS low 
+                THEN probability IS low;
     
-    RULE 4 : IF service IS poor AND food IS normal 
-                THEN tip IS cheap;
+    RULE 4 : IF ica IS good AND water_temperature IS low 
+                THEN probability IS average;
+    
+    RULE 5 : IF ica IS excellent AND water_temperature IS low 
+                THEN probability IS average;
+    
+    RULE 6 : IF ica IS awful AND water_temperature IS ideal 
+                THEN probability IS low;
                 
-    RULE 5 : IF service IS good AND food IS normal 
-                THEN tip IS average;
+    RULE 7 : IF ica IS bad AND water_temperature IS ideal 
+                THEN probability IS low;
                 
-    RULE 6 : IF service IS excellent AND food IS normal 
-                THEN tip IS generous;
+    RULE 8 : IF ica IS regular AND water_temperature IS ideal 
+                THEN probability IS high;
                 
-    RULE 7 : IF service IS poor AND food IS delicious 
-                THEN tip IS cheap;
+    RULE 9 : IF ica IS good AND water_temperature IS ideal 
+                THEN probability IS high;
                 
-    RULE 8 : IF service IS good AND food IS delicious 
-                THEN tip IS generous;
+    RULE 10 : IF ica IS excellent AND water_temperature IS ideal 
+                THEN probability IS high;
                 
-    RULE 9 : IF service IS excellent AND food IS delicious 
-                THEN tip IS generous;
+    RULE 11 : IF ica IS awful AND water_temperature IS high 
+                THEN probability IS low;
+                
+    RULE 12 : IF ica IS bad AND water_temperature IS high 
+                THEN probability IS low;
+                
+    RULE 13 : IF ica IS regular AND water_temperature IS high 
+                THEN probability IS low;
+                
+    RULE 14 : IF ica IS good AND water_temperature IS high 
+                THEN probability IS average;
+
+    RULE 15 : IF ica IS excellent AND water_temperature IS high 
+                THEN probability IS average;
+
+    RULE 16 : IF ica IS awful AND water_temperature IS very_high 
+                THEN probability IS low;
+                
+    RULE 17 : IF ica IS bad AND water_temperature IS very_high 
+                THEN probability IS low;
+                
+    RULE 18 : IF ica IS regular AND water_temperature IS very_high 
+                THEN probability IS low;
+                
+    RULE 19 : IF ica IS good AND water_temperature IS very_high 
+                THEN probability IS low;
+
+    RULE 20 : IF ica IS excellent AND water_temperature IS very_high 
+                THEN probability IS low;
 END_RULEBLOCK
 
 END_FUNCTION_BLOCK
