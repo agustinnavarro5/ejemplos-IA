@@ -1,7 +1,2 @@
-/.vs
-/**/.vs
-/**/bin/Debug
-/**/obj/Debug
-/**/.metadata/
-
-/red_neuronal/dataset/**/**/*.jpg
+/bin/
+/target/
