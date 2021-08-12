@@ -27,7 +27,7 @@ public class Main {
 		
 		fis.setVariable("ica", ica);
 
-		int water_temperature = setVariable(0, 40, "Water Temperature");
+		int water_temperature = setVariable(0, 50, "Water Temperature");
 		
 		fis.setVariable("water_temperature", water_temperature);
 

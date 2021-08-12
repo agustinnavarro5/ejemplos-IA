@@ -14,11 +14,11 @@ END_VAR
 
 // Input
 FUZZIFY ica
-    TERM awful := (0, 1) (30, 0) ; 
-    TERM bad := (25, 0) (30,1) (45,1) (55,0);
-    TERM regular := (45, 0) (55,1) (65,1) (75,0);
-    TERM good := (65, 0) (75,1) (85,1) (95,0);
-    TERM excellent := (85, 0) (100, 1);
+    TERM awful := (0, 1) (27.5, 0) ; 
+    TERM bad := (22.5, 0) (30,1) (45,1) (52.5,0);
+    TERM regular := (47.5, 0) (55,1) (67.2,1) (72.5,0);
+    TERM good := (67.2, 0) (75,1) (87.5,1) (92.5,0);
+    TERM excellent := (87.5, 0) (100, 1);
 END_FUZZIFY
 
 // Input
@@ -26,7 +26,7 @@ FUZZIFY water_temperature
     TERM low := (0, 1) (25, 0) ;
     TERM ideal := (22.5, 0) (25, 1) (27.5, 1) (30, 0);
     TERM high := (27.5, 0) (30, 1) (37.5, 1) (40, 0);
-    TERM very_high := (37.5,0) (40,1);
+    TERM very_high := (37.5,0) (50,1);
 END_FUZZIFY
 
 // Output
