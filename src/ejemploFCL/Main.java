@@ -43,6 +43,28 @@ public class Main {
 
 	}
 
+
+	private static float getProbability(float ica, float water_temperature){
+		String fileName = "flc/tipper.fcl";
+		
+		FIS fis = FIS.load(fileName);
+		
+		if (fis == null) {
+			return null;
+		}
+		
+		if (0 > ica || ica > 100 || 0 > water_temperature || water_temperature > 50) {
+				return null;
+		}
+		
+		fis.setVariable("ica", ica);
+		fis.setVariable("water_temperature", water_temperature);
+
+		fis.evaluate();
+		
+		return fis.getVariable("probability").getValue();
+	}
+
 	
 	private static int setVariable(
 			int limit0,

@@ -31,9 +31,9 @@ END_FUZZIFY
 
 // Output
 DEFUZZIFY probability
-    TERM low := (0,0) (5,1) (10,0);
-    TERM average := (10,0) (15,1) (20,0);
-    TERM high := (20,0) (25,1) (30,0);
+    TERM low := (0,0) (15,1) (30,0);
+    TERM average := (30,0) (45,1) (60,0);
+    TERM high := (60,0) (80,1) (100,0);
     // Use 'Center Of Gravity' defuzzification method
     METHOD : COG;
     // Default value is 0 (if no rule activates defuzzifier)
