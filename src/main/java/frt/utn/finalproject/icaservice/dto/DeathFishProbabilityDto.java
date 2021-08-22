@@ -6,7 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class DeathFishProbabilityDto {
-    private Integer ica;
-    private Integer waterTemperature;
+    private Double ica;
+    private Double waterTemperature;
     private Double fishSurvivalProbability;
+    private String fishSurvivalDesc;
 }
