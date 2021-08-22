@@ -1,6 +1,5 @@
 package frt.utn.finalproject.icaservice.expertsystem;
 
-import java.io.InputStream;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +15,7 @@ public class DeathFishProbabilityFL {
     @Value("${fuzzylogic.file}")
     private String fileName;
 
-    public Double getDeathFishProbability(Integer ica, Integer waterTemperature) throws Exception {
+    public Double getDeathFishProbability(Double ica, Double waterTemperature) throws Exception {
         return Optional.ofNullable(FIS.load(Utils.getFile(fileName),true)).map(fis -> {
             fis.setVariable(IcaEnum.ICA.label, ica);
             fis.setVariable(IcaEnum.WATER_TEMP.label, waterTemperature);

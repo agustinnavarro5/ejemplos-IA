@@ -5,14 +5,14 @@ import java.util.Map;
 
 public enum IcaEnum {
 
-    ICA("ica", 0, 100),
-    WATER_TEMP("water_temperature", 0, 50),
-    DEATH_FISH_PROBABILITY("probability", 0, 100);
+    ICA("ica", 0.00, 100.00),
+    WATER_TEMP("water_temperature", 0.00, 50.00),
+    DEATH_FISH_PROBABILITY("probability", 0.00, 100.00);
 
     private static final Map<String, IcaEnum> BY_LABEL = new HashMap<>();
     public final String label;
-    public final Integer lowLimit;
-    public final Integer highLimit;
+    public final Double lowLimit;
+    public final Double highLimit;
 
     static {
         for (IcaEnum e : values()) {
@@ -20,7 +20,7 @@ public enum IcaEnum {
         }
     }
 
-    private IcaEnum(final String label, final Integer lowLimit, final Integer highLimit) {
+    private IcaEnum(final String label, final Double lowLimit, final Double highLimit) {
         this.label = label;
         this.lowLimit = lowLimit;
         this.highLimit = highLimit;

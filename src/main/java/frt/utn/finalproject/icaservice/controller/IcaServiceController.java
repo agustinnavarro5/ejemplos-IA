@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import frt.utn.finalproject.icaservice.dto.DeathFishProbabilityDto;
-import frt.utn.finalproject.icaservice.service.IcaServiceService;
+import frt.utn.finalproject.icaservice.service.IcaService;
 
 @RestController
 @RequestMapping("/expert_system")
 public class IcaServiceController {
-    private final IcaServiceService icaService;
+    private final IcaService icaService;
 
     @Autowired
-    public IcaServiceController(final IcaServiceService icaService) {
+    public IcaServiceController(final IcaService icaService) {
         this.icaService = icaService;
     }
 
