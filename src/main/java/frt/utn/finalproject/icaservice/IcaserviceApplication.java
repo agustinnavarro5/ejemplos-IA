@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IcaserviceApplication {
+public class IcaServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(IcaserviceApplication.class, args);
+        SpringApplication.run(IcaServiceApplication.class, args);
     }
 
 }

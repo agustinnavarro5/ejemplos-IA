@@ -1,5 +1,9 @@
 package frt.utn.finalproject.icaservice.Utils;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import frt.utn.finalproject.icaservice.service.IcaEnum;
 
 public class Utils {
@@ -21,5 +25,9 @@ public class Utils {
             default:
                 throw new UnsupportedOperationException();
         }
+    }
+
+    public static InputStream getFile(String fileName) throws FileNotFoundException {
+        return Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
     }
 }

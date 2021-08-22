@@ -14,7 +14,7 @@
 	<name>icaservice</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -22,13 +22,7 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.20</version>
 		</dependency>
-		<dependency>
-			<groupId>jFuzzyLogic</groupId>
-			<artifactId>jFuzzyLogic</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/libs/jFuzzyLogic-1.0.jar</systemPath>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -39,6 +33,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+            <groupId>net.sourceforge.jfuzzylogic</groupId>
+            <artifactId>jFuzzyLogic</artifactId>
+            <version>3.3</version>
+            <type>jar</type>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -46,6 +47,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+    				<executions>
+       					 <execution>
+            				<configuration>
+								<includeSystemScope>true</includeSystemScope>
+                				<mainClass>frt.utn.finalproject.icaservice.IcaserviceApplication</mainClass>
+            				</configuration>
+        				</execution>
+    				</executions>
 			</plugin>
 		</plugins>
 	</build>

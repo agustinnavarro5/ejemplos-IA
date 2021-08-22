@@ -8,5 +8,5 @@ import lombok.Data;
 public class DeathFishProbabilityDto {
     private Integer ica;
     private Integer waterTemperature;
-    private Double deathFishProbability;
+    private Double fishSurvivalProbability;
 }
